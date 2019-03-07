@@ -2,8 +2,6 @@
 
 namespace hunomina\Routing\Auth\Firewall\SecurityContext;
 
-use hunomina\Routing\Auth\Firewall\Role;
-use hunomina\Routing\Auth\Firewall\Rule;
 use hunomina\Routing\RoutingException;
 
 abstract class SecurityContext

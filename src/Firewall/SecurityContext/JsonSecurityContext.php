@@ -3,8 +3,6 @@
 namespace hunomina\Routing\Auth\Firewall\SecurityContext;
 
 use hunomina\Routing\Auth\AuthRoutingException;
-use hunomina\Routing\Auth\Firewall\Role;
-use hunomina\Routing\Auth\Firewall\Rule;
 
 class JsonSecurityContext extends SecurityContext
 {

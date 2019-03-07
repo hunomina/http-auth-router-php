@@ -3,7 +3,7 @@
 namespace hunomina\Routing\Auth\Test;
 
 use hunomina\Routing\Auth\Firewall\Checker\AuthenticationCheckerInterface;
-use hunomina\Routing\Auth\Firewall\Role;
+use hunomina\Routing\Auth\Firewall\SecurityContext\Role;
 use hunomina\Routing\Auth\Firewall\SecurityContext\SecurityContext;
 use hunomina\Routing\Auth\Firewall\SecurityContext\SecurityContextException;
 use hunomina\Routing\Auth\UserInterface;

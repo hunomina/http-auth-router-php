@@ -1,8 +1,9 @@
 <?php
 
 use hunomina\Routing\Auth\AuthRouter;
-use hunomina\Routing\Auth\Firewall\Role;
-use hunomina\Routing\Auth\Firewall\Rule;
+use hunomina\Routing\Auth\AuthRoutingException;
+use hunomina\Routing\Auth\Firewall\SecurityContext\Role;
+use hunomina\Routing\Auth\Firewall\SecurityContext\Rule;
 use hunomina\Routing\Auth\Test\TestAuthenticationChecker;
 use hunomina\Routing\Route;
 use hunomina\Routing\RoutingException;
@@ -17,6 +18,7 @@ class InstantiationTest extends TestCase
     private const JSON_SECURITY_FILE = __DIR__ . '/conf/security.json';
 
     /**
+     * @throws AuthRoutingException
      * @throws ReflectionException
      * @throws RoutingException
      */
@@ -39,6 +41,7 @@ class InstantiationTest extends TestCase
     /**
      * @throws ReflectionException
      * @throws RoutingException
+     * @throws AuthRoutingException
      */
     public function testInstantiateJsonAuthRouter(): void
     {

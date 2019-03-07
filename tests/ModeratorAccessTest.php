@@ -2,6 +2,7 @@
 
 use hunomina\Http\Response\HtmlResponse;
 use hunomina\Routing\Auth\AuthRouter;
+use hunomina\Routing\Auth\AuthRoutingException;
 use hunomina\Routing\Auth\Test\TestAuthenticationChecker;
 use hunomina\Routing\Auth\Test\User\Moderator;
 use hunomina\Routing\RoutingException;
@@ -16,12 +17,13 @@ class ModeratorAccessTest extends TestCase
     private $router;
 
     /**
-     * AccessControlTest constructor.
+     * ModeratorAccessTest constructor.
      * @param string|null $name
      * @param array $data
      * @param string $dataName
-     * @throws \ReflectionException
+     * @throws ReflectionException
      * @throws RoutingException
+     * @throws AuthRoutingException
      */
     public function __construct(?string $name = null, array $data = [], string $dataName = '')
     {
