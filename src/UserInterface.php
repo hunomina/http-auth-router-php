@@ -1,10 +1,13 @@
 <?php
 
 
-namespace hunomina\Router\Auth;
+namespace hunomina\Routing\Auth;
 
-
-class UserInterface
+interface UserInterface
 {
-
+    /**
+     * @return string[]
+     * Return the user's roles array
+     */
+    public function getRoles(): array;
 }
