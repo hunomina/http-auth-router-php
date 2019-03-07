@@ -1,6 +1,6 @@
 <?php
 
-namespace hunomina\Routing\Auth\Firewall;
+namespace hunomina\Routing\Auth\Firewall\SecurityContext;
 
 class Role
 {

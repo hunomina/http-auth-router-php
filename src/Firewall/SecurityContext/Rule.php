@@ -1,6 +1,6 @@
 <?php
 
-namespace hunomina\Routing\Auth\Firewall;
+namespace hunomina\Routing\Auth\Firewall\SecurityContext;
 
 use hunomina\Routing\Auth\AuthRoutingException;
 
