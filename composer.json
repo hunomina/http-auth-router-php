@@ -1,0 +1,30 @@
+{
+  "name": "hunomina/http-auth-router-php",
+  "description": "Http Auth Router for PHP 7.1 or higher",
+  "type": "library",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "hunomina",
+      "email": "hugo.f972@gmail.com"
+    }
+  ],
+  "minimum-stability": "stable",
+  "require": {
+    "php": "^7.1",
+    "hunomina/http-router-php": "^1.2"
+  },
+  "require-dev": {
+    "phpunit/phpunit": ">7 <9"
+  },
+  "autoload": {
+    "psr-4": {
+      "hunomina\\Routing\\Auth\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "hunomina\\Routing\\Auth\\Test\\": "tests/"
+    }
+  }
+}
