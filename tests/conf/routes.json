@@ -1,0 +1,93 @@
+[
+  {
+    "name": "index",
+    "url": "/",
+    "methods": [
+      "GET"
+    ],
+    "action": "hunomina:Routing:Auth:Test:TestController::index"
+  },
+  {
+    "name": "anonymous",
+    "url": "/anonymous",
+    "methods": [
+      "GET"
+    ],
+    "action": "hunomina:Routing:Auth:Test:TestController::index"
+  },
+  {
+    "name": "putOnly",
+    "url": "/putOnly",
+    "methods": [
+      "PUT"
+    ],
+    "action": "hunomina:Routing:Auth:Test:TestController::index"
+  },
+  {
+    "name": "getAndPostOnly",
+    "url": "/getAndPostOnly",
+    "methods": [
+      "GET",
+      "POST"
+    ],
+    "action": "hunomina:Routing:Auth:Test:TestController::index"
+  },
+  {
+    "name": "getPostAndDeleteOnly",
+    "url": "/getPostAndDeleteOnly",
+    "methods": [
+      "GET",
+      "POST",
+      "DELETE"
+    ],
+    "action": "hunomina:Routing:Auth:Test:TestController::index"
+  },
+  {
+    "name": "user",
+    "url": "/users/[0-9]+",
+    "methods": [
+      "GET"
+    ],
+    "action": "hunomina:Routing:Auth:Test:TestController::index"
+  },
+  {
+    "name": "users",
+    "url": "/users",
+    "methods": [
+      "GET"
+    ],
+    "action": "hunomina:Routing:Auth:Test:TestController::index"
+  },
+  {
+    "name": "customers",
+    "url": "/customers",
+    "methods": [
+      "GET"
+    ],
+    "action": "hunomina:Routing:Auth:Test:TestController::index"
+  },
+  {
+    "name": "moderation",
+    "url": "/moderation",
+    "methods": [
+      "GET"
+    ],
+    "action": "hunomina:Routing:Auth:Test:TestController::index"
+  },
+  {
+    "name": "admin",
+    "url": "/admin",
+    "methods": [
+      "GET"
+    ],
+    "action": "hunomina:Routing:Auth:Test:TestController::index"
+  },
+  {
+    "name": "superadmin",
+    "url": "/superadmin",
+    "methods": [
+      "GET"
+    ],
+    "action": "hunomina:Routing:Auth:Test:TestController::index"
+  }
+]

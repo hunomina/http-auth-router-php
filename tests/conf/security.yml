@@ -1,0 +1,20 @@
+security:
+
+  auth_firewall:
+    - { path: ^/putOnly, roles: ANONYMOUS, methods: put } # route can only be accessed by PUT method and auth is on PUT method
+    - { path: ^/getAndPostOnly, roles: ROLE_ADMIN, methods: post } # route can only be accessed by GET and POST method and auth is on POST method
+    - { path: ^/getPostAndDeleteOnly, roles: ROLE_ADMIN, methods: [post, delete] } # route can only be accessed by GET, POST and DELETE method and auth is on POST and DELETE method
+    - { path: ^/superadmin, roles: ROLE_SUPER_ADMIN }
+    - { path: ^/admin, roles: ROLE_ADMIN }
+    - { path: ^/moderation, roles: [ROLE_ADMIN, ROLE_MODERATOR] }
+    - { path: ^/users/[0-9]+, roles: [ROLE_ADMIN, ROLE_MODERATOR] }
+    - { path: ^/users, roles: ROLE_USER }
+    - { path: ^/customers, roles: ROLE_CUSTOMER }
+    - { path: ^/anonymous, roles: ANONYMOUS }
+
+  role_hierarchy:
+    ROLE_SUPER_ADMIN: ROLE_ADMIN
+    ROLE_ADMIN: [ROLE_USER, ROLE_CUSTOMER]
+    ROLE_MODERATOR: [ROLE_USER, ROLE_CUSTOMER]
+    ROLE_USER: ANONYMOUS
+    ROLE_CUSTOMER: ANONYMOUS

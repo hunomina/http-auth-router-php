@@ -1,0 +1,68 @@
+{
+  "security": {
+    "auth_firewall": [
+      {
+        "path": "^/putOnly",
+        "roles": "ANONYMOUS",
+        "methods": "put"
+      },
+      {
+        "path": "^/getAndPostOnly",
+        "roles": "ANONYMOUS",
+        "methods": "post"
+      },
+      {
+        "path": "^/getPostAndDeleteOnly",
+        "roles": "ANONYMOUS",
+        "methods": [
+          "post",
+          "delete"
+        ]
+      },
+      {
+        "path": "^/superadmin",
+        "roles": "ROLE_SUPER_ADMIN"
+      },
+      {
+        "path": "^/admin",
+        "roles": "ROLE_ADMIN"
+      },
+      {
+        "path": "^/moderation",
+        "roles": [
+          "ROLE_ADMIN",
+          "ROLE_MODERATOR"
+        ]
+      },
+      {
+        "path": "^/users/[0-9]+",
+        "roles": [
+          "ROLE_ADMIN",
+          "ROLE_MODERATOR"
+        ]
+      },
+      {
+        "path": "^/users",
+        "roles": "ROLE_USER"
+      },
+      {
+        "path": "^/customers",
+        "roles": "ROLE_CUSTOMER"
+      },
+      {
+        "path": "^/anonymous",
+        "roles": "ANONYMOUS"
+      }
+    ],
+    "role_hierarchy": {
+      "ROLE_SUPER_ADMIN": "ROLE_ADMIN",
+      "ROLE_ADMIN": [
+        "ROLE_USER",
+        "ROLE_CUSTOMER"
+      ],
+      "ROLE_MODERATOR": "ANONYMOUS",
+      "ROLE_USER": "ANONYMOUS",
+      "ROLE_CUSTOMER": "ANONYMOUS"
+    }
+  }
+}

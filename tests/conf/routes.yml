@@ -1,0 +1,56 @@
+index:
+  url: /
+  methods: [GET]
+  action: hunomina:Routing:Auth:Test:TestController::index
+
+anonymous:
+  url: /anonymous
+  methods: [GET]
+  action: hunomina:Routing:Auth:Test:TestController::index
+
+putOnly:
+  url: /putOnly
+  methods: [PUT]
+  action: hunomina:Routing:Auth:Test:TestController::index
+
+getAndPostOnly:
+  url: /getAndPostOnly
+  methods: [GET, POST]
+  action: hunomina:Routing:Auth:Test:TestController::index
+
+getPostAndDeleteOnly:
+  url: /getPostAndDeleteOnly
+  methods: [GET, POST, DELETE]
+  action: hunomina:Routing:Auth:Test:TestController::index
+
+user:
+  url: /users/[0-9]+
+  methods: [GET]
+  action: hunomina:Routing:Auth:Test:TestController::index
+
+users:
+  url: /users
+  methods: [GET]
+  action: hunomina:Routing:Auth:Test:TestController::index
+
+customers:
+  url: /customers
+  methods: [GET]
+  action: hunomina:Routing:Auth:Test:TestController::index
+
+moderation:
+  url: /moderation
+  methods: [GET]
+  action: hunomina:Routing:Auth:Test:TestController::index
+
+admin:
+  url: /admin
+  methods: [GET]
+  action: hunomina:Routing:Auth:Test:TestController::index
+
+superadmin:
+  url: /superadmin
+  methods: [GET]
+  action: hunomina:Routing:Auth:Test:TestController::index
+
+
