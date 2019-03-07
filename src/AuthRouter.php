@@ -39,6 +39,7 @@ class AuthRouter extends Router
     /**
      * @param string $security_context_file
      * @return AuthRouter
+     * @throws AuthRoutingException
      * @throws RoutingException
      */
     public function loadSecurityContext(string $security_context_file): AuthRouter
@@ -54,6 +55,7 @@ class AuthRouter extends Router
     /**
      * @param string $security_context_file
      * @return AuthRouter
+     * @throws AuthRoutingException
      * @throws RoutingException
      */
     public function setYamlSecurityContext(string $security_context_file): AuthRouter
@@ -68,6 +70,7 @@ class AuthRouter extends Router
     /**
      * @param string $security_context_file
      * @return AuthRouter
+     * @throws AuthRoutingException
      * @throws RoutingException
      */
     public function setJsonSecurityContext(string $security_context_file): AuthRouter
