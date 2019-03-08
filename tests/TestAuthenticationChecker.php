@@ -37,7 +37,7 @@ class TestAuthenticationChecker implements AuthenticationCheckerInterface
      * @param string $method
      * @param string $url
      * @return bool
-     * Return true if the user has access to the url
+     * @throws SecurityContextException
      */
     public static function checkAuthorization(?UserInterface $user, SecurityContext $securityContext, string $method, string $url): bool
     {
