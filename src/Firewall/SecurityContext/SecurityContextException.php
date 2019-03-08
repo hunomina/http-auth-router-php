@@ -2,7 +2,7 @@
 
 namespace hunomina\Routing\Auth\Firewall\SecurityContext;
 
-use PHPUnit\Framework\Exception;
+use \Exception;
 
 class SecurityContextException extends Exception
 {
