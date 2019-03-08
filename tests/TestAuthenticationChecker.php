@@ -47,6 +47,10 @@ class TestAuthenticationChecker implements AuthenticationCheckerInterface
             return true;
         }
 
+        if (!($user instanceof UserInterface)) {
+            return false;
+        }
+
         /** @var Role[] $userRoles */
         $userRoles = [];
         foreach ($user->getRoles() as $role) {
