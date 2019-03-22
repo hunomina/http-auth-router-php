@@ -85,7 +85,7 @@ class UserAccessTest extends TestCase
 
         $response = $this->router->request('GET', '/customers');
         $this->assertInstanceOf(HtmlResponse::class, $response);
-        $this->assertEquals(401, $response->getHttpCode());
+        $this->assertEquals(302, $response->getHttpCode());
     }
 
     /**
@@ -99,7 +99,7 @@ class UserAccessTest extends TestCase
 
         $response = $this->router->request('GET', '/moderation');
         $this->assertInstanceOf(HtmlResponse::class, $response);
-        $this->assertEquals(401, $response->getHttpCode());
+        $this->assertEquals(302, $response->getHttpCode());
     }
 
     /**
@@ -113,7 +113,7 @@ class UserAccessTest extends TestCase
 
         $response = $this->router->request('GET', '/admin');
         $this->assertInstanceOf(HtmlResponse::class, $response);
-        $this->assertEquals(401, $response->getHttpCode());
+        $this->assertEquals(302, $response->getHttpCode());
     }
 
     /**
@@ -127,7 +127,7 @@ class UserAccessTest extends TestCase
 
         $response = $this->router->request('GET', '/superadmin');
         $this->assertInstanceOf(HtmlResponse::class, $response);
-        $this->assertEquals(401, $response->getHttpCode());
+        $this->assertEquals(302, $response->getHttpCode());
     }
 
     ////////// Test Variables Urls //////////
@@ -143,7 +143,7 @@ class UserAccessTest extends TestCase
 
         $response = $this->router->request('GET', '/users/1');
         $this->assertInstanceOf(HtmlResponse::class, $response);
-        $this->assertEquals(401, $response->getHttpCode());
+        $this->assertEquals(302, $response->getHttpCode());
     }
 
     ////////// Test Methods //////////
@@ -201,7 +201,7 @@ class UserAccessTest extends TestCase
 
         $response = $this->router->request('POST', '/getAndPostOnly');
         $this->assertInstanceOf(HtmlResponse::class, $response);
-        $this->assertEquals(401, $response->getHttpCode()); // auth not ok and route ok => 401
+        $this->assertEquals(302, $response->getHttpCode()); // auth not ok and route ok => 401
     }
 
     /**
@@ -229,7 +229,7 @@ class UserAccessTest extends TestCase
 
         $response = $this->router->request('POST', '/getPostAndDeleteOnly');
         $this->assertInstanceOf(HtmlResponse::class, $response);
-        $this->assertEquals(401, $response->getHttpCode()); // auth not ok and route ok => 401
+        $this->assertEquals(302, $response->getHttpCode()); // auth not ok and route ok => 401
     }
 
     /**
@@ -243,6 +243,6 @@ class UserAccessTest extends TestCase
 
         $response = $this->router->request('DELETE', '/getPostAndDeleteOnly');
         $this->assertInstanceOf(HtmlResponse::class, $response);
-        $this->assertEquals(401, $response->getHttpCode()); // auth not ok and route ok => 401
+        $this->assertEquals(302, $response->getHttpCode()); // auth not ok and route ok => 401
     }
 }

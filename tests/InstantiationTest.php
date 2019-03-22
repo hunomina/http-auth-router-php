@@ -58,7 +58,4 @@ class InstantiationTest extends TestCase
         $this->assertContainsOnlyInstancesOf(Role::class, $router->getSecurityContext()->getRoles());
         $this->assertCount(6, $router->getSecurityContext()->getRoles());
     }
-
-    // todo
-    // add all wrong instantiation : bad config
 }

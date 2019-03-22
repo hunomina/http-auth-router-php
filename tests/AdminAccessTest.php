@@ -127,7 +127,7 @@ class AdminAccessTest extends TestCase
 
         $response = $this->router->request('GET', '/superadmin');
         $this->assertInstanceOf(HtmlResponse::class, $response);
-        $this->assertEquals(401, $response->getHttpCode());
+        $this->assertEquals(302, $response->getHttpCode());
     }
 
     ////////// Test Variables Urls //////////
