@@ -109,7 +109,8 @@ class AuthRouter extends Router
             }
 
             $response = new HtmlResponse('401 Unauthorized');
-            $response->setHttpCode(401);
+            $response->setHttpCode(302); // 401 is not redirected by web browsers
+            $response->addHeader('Cache-Control: no-cache');
             $response->addHeader('Location: ' . $this->_unauthorizedUrl);
 
             return $response;
