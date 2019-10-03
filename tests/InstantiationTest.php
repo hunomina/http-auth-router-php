@@ -4,6 +4,7 @@ use hunomina\Routing\Auth\AuthRouter;
 use hunomina\Routing\Auth\AuthRoutingException;
 use hunomina\Routing\Auth\Firewall\SecurityContext\Role;
 use hunomina\Routing\Auth\Firewall\SecurityContext\Rule;
+use hunomina\Routing\Auth\Firewall\SecurityContext\SecurityContextException;
 use hunomina\Routing\Auth\Test\TestAuthenticationChecker;
 use hunomina\Routing\Route;
 use hunomina\Routing\RoutingException;
@@ -21,6 +22,7 @@ class InstantiationTest extends TestCase
      * @throws AuthRoutingException
      * @throws ReflectionException
      * @throws RoutingException
+     * @throws SecurityContextException
      */
     public function testInstantiateYamlAuthRouter(): void
     {
@@ -39,9 +41,10 @@ class InstantiationTest extends TestCase
     }
 
     /**
+     * @throws AuthRoutingException
      * @throws ReflectionException
      * @throws RoutingException
-     * @throws AuthRoutingException
+     * @throws SecurityContextException
      */
     public function testInstantiateJsonAuthRouter(): void
     {

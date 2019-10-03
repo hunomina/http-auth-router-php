@@ -14,7 +14,7 @@ class TestAuthenticationChecker implements AuthenticationCheckerInterface
      * @return bool
      * Return true if an user is authenticated
      */
-    public static function isAuthenticated(): bool
+    public function isAuthenticated(): bool
     {
         $user = unserialize($_SESSION['auth']);
         return $user instanceof UserInterface;
@@ -25,7 +25,7 @@ class TestAuthenticationChecker implements AuthenticationCheckerInterface
      * Return the authenticated UserInterface
      * Implement to retrieve an user from your application (cookies, sessions, ...)
      */
-    public static function getAuthenticatedUser(): ?UserInterface
+    public function getAuthenticatedUser(): ?UserInterface
     {
         $user = unserialize($_SESSION['auth']);
         return $user instanceof UserInterface ? $user : null;
@@ -39,7 +39,7 @@ class TestAuthenticationChecker implements AuthenticationCheckerInterface
      * @return bool
      * @throws SecurityContextException
      */
-    public static function checkAuthorization(?UserInterface $user, SecurityContext $securityContext, string $method, string $url): bool
+    public function checkAuthorization(?UserInterface $user, SecurityContext $securityContext, string $method, string $url): bool
     {
         $ruleRoles = $securityContext->getRolesByRule($method, $url);
 

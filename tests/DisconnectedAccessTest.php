@@ -3,6 +3,7 @@
 use hunomina\Http\Response\HtmlResponse;
 use hunomina\Routing\Auth\AuthRouter;
 use hunomina\Routing\Auth\AuthRoutingException;
+use hunomina\Routing\Auth\Firewall\SecurityContext\SecurityContextException;
 use hunomina\Routing\Auth\Test\TestAuthenticationChecker;
 use hunomina\Routing\RoutingException;
 use PHPUnit\Framework\TestCase;
@@ -20,9 +21,10 @@ class DisconnectedAccessTest extends TestCase
      * @param string|null $name
      * @param array $data
      * @param string $dataName
+     * @throws AuthRoutingException
      * @throws ReflectionException
      * @throws RoutingException
-     * @throws AuthRoutingException
+     * @throws SecurityContextException
      */
     public function __construct(?string $name = null, array $data = [], string $dataName = '')
     {
