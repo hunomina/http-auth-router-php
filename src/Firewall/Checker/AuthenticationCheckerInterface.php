@@ -11,14 +11,14 @@ interface AuthenticationCheckerInterface
      * @return bool
      * Return true if an user is authenticated
      */
-    public static function isAuthenticated(): bool;
+    public function isAuthenticated(): bool;
 
     /**
      * @return UserInterface
      * Return the authenticated UserInterface
      * Implement to retrieve an user from your application (cookies, sessions, ...)
      */
-    public static function getAuthenticatedUser(): ?UserInterface;
+    public function getAuthenticatedUser(): ?UserInterface;
 
     /**
      * @param UserInterface|null $user
@@ -28,5 +28,5 @@ interface AuthenticationCheckerInterface
      * @return bool
      * Return true if the user has access to the url
      */
-    public static function checkAuthorization(?UserInterface $user, SecurityContext $securityContext, string $method, string $url): bool;
+    public function checkAuthorization(?UserInterface $user, SecurityContext $securityContext, string $method, string $url): bool;
 }
