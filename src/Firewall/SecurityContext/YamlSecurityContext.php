@@ -5,16 +5,18 @@ namespace hunomina\Routing\Auth\Firewall\SecurityContext;
 use hunomina\Routing\Auth\AuthRoutingException;
 use Symfony\Component\Yaml\Exception\ParseException;
 use Symfony\Component\Yaml\Yaml;
+use function in_array;
 
 class YamlSecurityContext extends SecurityContext
 {
     /**
      * @throws AuthRoutingException
+     * @throws SecurityContextException
      */
     public function load(): void
     {
         try {
-            $yaml_file_content = Yaml::parseFile($this->_securityContextFile);
+            $yaml_file_content = Yaml::parseFile($this->securityContextFile);
         } catch (ParseException $e) {
             throw new SecurityContextException('Invalid configuration file', 0, $e);
         }

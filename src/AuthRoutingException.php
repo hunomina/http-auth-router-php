@@ -2,6 +2,8 @@
 
 namespace hunomina\Routing\Auth;
 
-class AuthRoutingException extends \Exception
+use Exception;
+
+class AuthRoutingException extends Exception
 {
 }

@@ -3,15 +3,17 @@
 namespace hunomina\Routing\Auth\Firewall\SecurityContext;
 
 use hunomina\Routing\Auth\AuthRoutingException;
+use function in_array;
 
 class JsonSecurityContext extends SecurityContext
 {
     /**
      * @throws AuthRoutingException
+     * @throws SecurityContextException
      */
     public function load(): void
     {
-        $json_file_content = json_decode(file_get_contents($this->_securityContextFile), true);
+        $json_file_content = json_decode(file_get_contents($this->securityContextFile), true);
 
         if (!$this->isSecurityContextValid($json_file_content)) {
             throw new SecurityContextException('Invalid configuration file');
