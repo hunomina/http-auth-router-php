@@ -10,4 +10,7 @@ before_script:
   - travis_retry composer install --no-interaction --prefer-source
 
 script:
-  - php vendor/bin/phpunit --bootstrap vendor/autoload.php tests
+  - php vendor/bin/phpunit --configuration phpunit.xml tests
+
+after_script:
+  - bash <(curl -s https://codecov.io/bash)

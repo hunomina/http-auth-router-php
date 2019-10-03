@@ -1,0 +1,19 @@
+<phpunit bootstrap="vendor/autoload.php"
+         colors="true"
+         convertErrorsToExceptions="true"
+         convertNoticesToExceptions="true"
+         convertWarningsToExceptions="true"
+         processIsolation="false"
+         stopOnFailure="false">
+    <filter>
+        <whitelist processUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">./src</directory>
+            <exclude>
+                <directory>./vendor</directory>
+            </exclude>
+        </whitelist>
+    </filter>
+    <logging>
+        <log type="coverage-clover" target="clover.xml"/>
+    </logging>
+</phpunit>
