@@ -10,29 +10,30 @@ use hunomina\Routing\Auth\Firewall\SecurityContext\SecurityContext;
 use hunomina\Routing\Auth\Firewall\SecurityContext\YamlSecurityContext;
 use hunomina\Routing\Router;
 use hunomina\Routing\RoutingException;
+use ReflectionException;
 
 class AuthRouter extends Router
 {
     /** @var AuthenticationCheckerInterface $autheticationChecker */
-    protected $_authenticationChecker;
+    protected $authenticationChecker;
 
-    /** @var SecurityContext $_securityContext */
-    protected $_securityContext;
+    /** @var SecurityContext $securityContext */
+    protected $securityContext;
 
-    /** @var string $_unauthorizedUrl */
-    protected $_unauthorizedUrl = '/401';
+    /** @var string $unauthorizedUrl */
+    protected $unauthorizedUrl = '/401';
 
     /**
      * AuthRouter constructor.
      * @param string $route_file
      * @param AuthenticationCheckerInterface $checker
      * @param string $type
-     * @throws \ReflectionException
+     * @throws ReflectionException
      * @throws RoutingException
      */
     public function __construct(string $route_file, AuthenticationCheckerInterface $checker, string $type = 'yaml')
     {
-        $this->_authenticationChecker = $checker;
+        $this->authenticationChecker = $checker;
         parent::__construct($route_file, $type);
     }
 
@@ -40,6 +41,7 @@ class AuthRouter extends Router
      * @param string $security_context_file
      * @return AuthRouter
      * @throws AuthRoutingException
+     * @throws Firewall\SecurityContext\SecurityContextException
      * @throws RoutingException
      */
     public function loadSecurityContext(string $security_context_file): AuthRouter
@@ -56,13 +58,14 @@ class AuthRouter extends Router
      * @param string $security_context_file
      * @return AuthRouter
      * @throws AuthRoutingException
+     * @throws Firewall\SecurityContext\SecurityContextException
      * @throws RoutingException
      */
     public function setYamlSecurityContext(string $security_context_file): AuthRouter
     {
         $securityContext = new YamlSecurityContext($security_context_file);
         $securityContext->load();
-        $this->_securityContext = $securityContext;
+        $this->securityContext = $securityContext;
 
         return $this;
     }
@@ -71,26 +74,27 @@ class AuthRouter extends Router
      * @param string $security_context_file
      * @return AuthRouter
      * @throws AuthRoutingException
+     * @throws Firewall\SecurityContext\SecurityContextException
      * @throws RoutingException
      */
     public function setJsonSecurityContext(string $security_context_file): AuthRouter
     {
         $securityContext = new JsonSecurityContext($security_context_file);
         $securityContext->load();
-        $this->_securityContext = $securityContext;
+        $this->securityContext = $securityContext;
 
         return $this;
     }
 
     public function setUnauthorizedUrl(string $url): AuthRouter
     {
-        $this->_unauthorizedUrl = $url;
+        $this->unauthorizedUrl = $url;
         return $this;
     }
 
     public function getSecurityContext(): SecurityContext
     {
-        return $this->_securityContext;
+        return $this->securityContext;
     }
 
     /**
@@ -101,17 +105,17 @@ class AuthRouter extends Router
      */
     public function request(string $method, string $url): Response
     {
-        if ($this->_securityContext instanceof SecurityContext) {
+        if ($this->securityContext instanceof SecurityContext) {
 
-            $user = $this->_authenticationChecker::getAuthenticatedUser();
-            if ($this->_authenticationChecker::checkAuthorization($user, $this->_securityContext, $method, $url)) {
+            $user = $this->authenticationChecker->getAuthenticatedUser();
+            if ($this->authenticationChecker->checkAuthorization($user, $this->securityContext, $method, $url)) {
                 return parent::request($method, $url);
             }
 
             $response = new HtmlResponse('401 Unauthorized');
             $response->setHttpCode(302); // 401 is not redirected by web browsers
             $response->addHeader('Cache-Control: no-cache');
-            $response->addHeader('Location: ' . $this->_unauthorizedUrl);
+            $response->addHeader('Location: ' . $this->unauthorizedUrl);
 
             return $response;
         }

@@ -4,15 +4,15 @@ namespace hunomina\Routing\Auth\Firewall\SecurityContext;
 
 class Role
 {
-    /** @var string $_name */
-    protected $_name;
+    /** @var string $name */
+    private $name;
 
-    /** @var Role[] $_children */
-    protected $_children = [];
+    /** @var Role[] $children */
+    private $children = [];
 
     public function __construct(string $name)
     {
-        $this->_name = $name;
+        $this->name = $name;
     }
 
     /**
@@ -20,7 +20,7 @@ class Role
      */
     public function getName(): string
     {
-        return $this->_name;
+        return $this->name;
     }
 
     /**
@@ -28,7 +28,7 @@ class Role
      */
     public function setName(string $name): void
     {
-        $this->_name = $name;
+        $this->name = $name;
     }
 
     /**
@@ -36,7 +36,7 @@ class Role
      */
     public function getChildren(): array
     {
-        return $this->_children;
+        return $this->children;
     }
 
     /**
@@ -44,18 +44,22 @@ class Role
      */
     public function setChildren(array $children): void
     {
-        $this->_children = $children;
+        $this->children = $children;
     }
 
+    /**
+     * @param Role $role
+     * @return bool
+     */
     public function contains(Role $role): bool
     {
         $roleName = $role->getName();
 
-        if ($this->_name === $roleName) {
+        if ($this->name === $roleName) {
             return true;
         }
 
-        foreach ($this->_children as $child) {
+        foreach ($this->children as $child) {
             if ($child->getName() === $roleName) {
                 return true;
             }

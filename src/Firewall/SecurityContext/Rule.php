@@ -6,14 +6,14 @@ use hunomina\Routing\Auth\AuthRoutingException;
 
 class Rule
 {
-    /** @var string $_path */
-    protected $_path;
+    /** @var string $path */
+    private $path;
 
-    /** @var array $_methods */
-    protected $_methods = [];
+    /** @var array $methods */
+    private $methods = [];
 
-    /** @var Role[] $_roles */
-    protected $_roles;
+    /** @var Role[] $roles */
+    private $roles;
 
     /**
      * Rule constructor.
@@ -24,9 +24,9 @@ class Rule
      */
     public function __construct(string $_path, array $methods, array $_roles)
     {
-        $this->_path = $_path;
+        $this->path = $_path;
         $this->setMethods($methods);
-        $this->_roles = $_roles;
+        $this->roles = $_roles;
     }
 
     /**
@@ -34,7 +34,7 @@ class Rule
      */
     public function getPath(): string
     {
-        return $this->_path;
+        return $this->path;
     }
 
     /**
@@ -42,7 +42,7 @@ class Rule
      */
     public function setPath(string $path): void
     {
-        $this->_path = $path;
+        $this->path = $path;
     }
 
     /**
@@ -50,7 +50,7 @@ class Rule
      */
     public function getRoles(): array
     {
-        return $this->_roles;
+        return $this->roles;
     }
 
     /**
@@ -58,7 +58,7 @@ class Rule
      */
     public function setRoles(array $roles): void
     {
-        $this->_roles = $roles;
+        $this->roles = $roles;
     }
 
     /**
@@ -66,7 +66,7 @@ class Rule
      */
     public function getMethods(): array
     {
-        return $this->_methods;
+        return $this->methods;
     }
 
     /**
@@ -77,9 +77,9 @@ class Rule
     {
         foreach ($methods as $method) {
             if (!is_string($method)) {
-                throw new AuthRoutingException('Methods for rule ' . $this->_path . ' can only be string');
+                throw new AuthRoutingException('Methods for rule ' . $this->path . ' can only be string');
             }
-            $this->_methods[] = strtoupper($method);
+            $this->methods[] = strtoupper($method);
         }
     }
 
@@ -90,9 +90,9 @@ class Rule
      */
     public function match(string $method, string $url): bool
     {
-        if ((count($this->_methods) > 0) && !in_array(strtoupper($method), $this->_methods, true)) {
+        if ((count($this->methods) > 0) && !in_array(strtoupper($method), $this->methods, true)) {
             return false;
         }
-        return preg_match('/' . addcslashes($this->_path, '/') . '/', $url);
+        return preg_match('/' . addcslashes($this->path, '/') . '/', $url);
     }
 }

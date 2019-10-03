@@ -7,20 +7,20 @@ use hunomina\Routing\RoutingException;
 abstract class SecurityContext
 {
     /**
-     * @var Role[] $_roles
+     * @var Role[] $roles
      */
-    protected $_roles = [];
+    protected $roles = [];
 
     /**
-     * @var Rule[] $_firewall
+     * @var Rule[] $firewallRules
      */
-    protected $_firewallRules;
+    protected $firewallRules;
 
     /**
-     * @var string $_securityContextFile
+     * @var string $securityContextFile
      * File containing the security context
      */
-    protected $_securityContextFile;
+    protected $securityContextFile;
 
     /**
      * SecurityContextInterface constructor.
@@ -33,7 +33,7 @@ abstract class SecurityContext
             throw new RoutingException('The security context file does not exist');
         }
 
-        $this->_securityContextFile = $security_context_file;
+        $this->securityContextFile = $security_context_file;
     }
 
     /**
@@ -53,7 +53,7 @@ abstract class SecurityContext
      */
     public function getRoles(): array
     {
-        return $this->_roles;
+        return $this->roles;
     }
 
     /**
@@ -61,7 +61,7 @@ abstract class SecurityContext
      */
     public function getFirewallRules(): array
     {
-        return $this->_firewallRules;
+        return $this->firewallRules;
     }
 
     /**
@@ -70,7 +70,7 @@ abstract class SecurityContext
      */
     public function getRoleByName(string $name): ?Role
     {
-        foreach ($this->_roles as $role) {
+        foreach ($this->roles as $role) {
             if ($role->getName() === $name) {
                 return $role;
             }
@@ -85,7 +85,7 @@ abstract class SecurityContext
      */
     public function getRolesByRule(string $method, string $url): array
     {
-        foreach ($this->_firewallRules as $rule) {
+        foreach ($this->firewallRules as $rule) {
             if ($rule->match($method, $url)) {
                 return $rule->getRoles();
             }

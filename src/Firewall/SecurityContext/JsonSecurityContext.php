@@ -25,7 +25,7 @@ class JsonSecurityContext extends SecurityContext
         $sortedRoles = self::sortRoles($role_hierarchy);
 
         foreach ($sortedRoles as $role => $children) {
-            $this->_roles[] = new Role($role);
+            $this->roles[] = new Role($role);
         }
 
         foreach ($sortedRoles as $role => $children) {
@@ -86,7 +86,7 @@ class JsonSecurityContext extends SecurityContext
                 $roles[] = $r;
             }
 
-            $this->_firewallRules[] = new Rule($path, $methods, $roles);
+            $this->firewallRules[] = new Rule($path, $methods, $roles);
         }
     }
 
@@ -131,7 +131,7 @@ class JsonSecurityContext extends SecurityContext
 
             $children = (array)$children;
             foreach ($children as $child) {
-                if (!\in_array($child, $sortedRoles[$role], true)) {
+                if (!in_array($child, $sortedRoles[$role], true)) {
                     $sortedRoles[$role][] = $child;
                 }
 
@@ -148,7 +148,7 @@ class JsonSecurityContext extends SecurityContext
                 foreach ($r_children as $role) {
                     if ($r_name !== $role && isset($sortedRoles[$role])) {
                         foreach ($sortedRoles[$role] as $r) {
-                            if (!\in_array($r, $sortedRoles[$r_name], true)) {
+                            if (!in_array($r, $sortedRoles[$r_name], true)) {
                                 $sortedRoles[$r_name][] = $r;
                             }
                         }
