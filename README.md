@@ -1,6 +1,7 @@
 # Http Authentication Router PHP
 
 [![Build Status](https://travis-ci.com/hunomina/http-auth-router-php.svg?branch=master)](https://travis-ci.com/hunomina/http-auth-router-php)
+[![codecov](https://codecov.io/gh/hunomina/http-auth-router-php/branch/master/graph/badge.svg)](https://codecov.io/gh/hunomina/http-auth-router-php)
 
 Description : Implementation of Http Router classes for PHP7.1 or higher with authentication.
 
