@@ -25,9 +25,9 @@ The route file syntax is identical to the *[hunomina\Routing\Router](https://git
 
 The *[AuthenticationCheckerInterface](https://github.com/hunomina/http-auth-router-php/blob/master/src/Firewall/Checker/AuthenticationCheckerInterface.php)* has three methods :
 
-- *bool* isAuthenticated() : Return true if an user is connected to your application. You can whatever you want : cookies, sessions, headers...
-- *?UserInterface* getAuthenticatedUser() : Return the authenticated user for session, cookie, headers...
-- *bool* checkAuthorization(*?UserInterface* $user, *SecurityContext* $securityContext, *string* $method, *string* $url) : Return true if a specific user can access to a route (method + url) based on a security context
+- *bool* isAuthenticated() : Returns true if an user is connected to your application. You can whatever you want : cookies, sessions, headers...
+- *?UserInterface* getAuthenticatedUser() : Returns the authenticated user for session, cookie, headers...
+- *bool* checkAuthorization(*?UserInterface* $user, *SecurityContext* $securityContext, *string* $method, *string* $url) : Returns true if a specific user can access to a route (method + url) based on a security context
 
 In order for the AuthRouter to work with your application, you have to create a class that implements the *[AuthenticationCheckerInterface](https://github.com/hunomina/http-auth-router-php/blob/master/src/Firewall/Checker/AuthenticationCheckerInterface.php)* interface and her methods.
 
@@ -37,9 +37,10 @@ You absolutely can add some methods if needed.
 
 The *[UserInterface](https://github.com/hunomina/http-auth-router-php/blob/master/src/UserInterface.php)* must be implemented by all user entities that will log into your application.
 
-This interface has only one method :
+This interface has two methods :
 
-- *string[]* getRoles() : Return a string list of all the user's security context roles
+- *string[]* getRoles() : Returns a string list of all the user's security context roles
+- *string* getUsername() : Returns the username used to authenticate the user
 
 ### SecurityContext
 
@@ -52,7 +53,7 @@ You can then use the security context object in your AuthenticationChecker appli
 This class is abstract and has two methods that you have to implement :
 
 - *void* load(): Once the configuration file has been validated, loads it and instantiates *[Role](https://github.com/hunomina/http-auth-router-php/blob/master/src/Firewall/SecurityContext/Role.php)* and *[Rule](https://github.com/hunomina/http-auth-router-php/blob/master/src/Firewall/SecurityContext/Rule.php)* object to feet the configuration
-- *bool* isSecurityContextValid() : Return true if the configuration file syntax is valid
+- *bool* isSecurityContextValid() : Returns true if the configuration file syntax is valid
 
 This package comes with two built-in SecurityContext implementation :
 
@@ -75,7 +76,7 @@ This class has two properties :
 
 And one method :
 
-- *bool* contains(*Role* $role) : Return true if the Role instance is $role or has $role as a child
+- *bool* contains(*Role* $role) : Returns true if the Role instance is $role or has $role as a child
 
 ### Rule
 
