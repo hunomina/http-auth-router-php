@@ -14,4 +14,13 @@ class Moderator implements UserInterface
     {
         return ['ROLE_MODERATOR'];
     }
+
+    /**
+     * @return string
+     * Returns the username used to authenticate the user
+     */
+    public function getUsername(): string
+    {
+        return 'moderator';
+    }
 }

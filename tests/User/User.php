@@ -14,4 +14,13 @@ class User implements UserInterface
     {
         return ['ROLE_USER'];
     }
+
+    /**
+     * @return string
+     * Returns the username used to authenticate the user
+     */
+    public function getUsername(): string
+    {
+        return 'user';
+    }
 }

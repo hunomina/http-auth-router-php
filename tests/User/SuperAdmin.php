@@ -14,4 +14,13 @@ class SuperAdmin implements UserInterface
     {
         return ['ROLE_SUPER_ADMIN'];
     }
+
+    /**
+     * @return string
+     * Returns the username used to authenticate the user
+     */
+    public function getUsername(): string
+    {
+        return 'super_admin';
+    }
 }

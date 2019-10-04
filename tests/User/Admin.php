@@ -14,4 +14,13 @@ class Admin implements UserInterface
     {
         return ['ROLE_ADMIN'];
     }
+
+    /**
+     * @return string
+     * Returns the username used to authenticate the user
+     */
+    public function getUsername(): string
+    {
+        return 'admin';
+    }
 }

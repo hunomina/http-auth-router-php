@@ -14,4 +14,13 @@ class Customer implements UserInterface
     {
         return ['ROLE_CUSTOMER'];
     }
+
+    /**
+     * @return string
+     * Returns the username used to authenticate the user
+     */
+    public function getUsername(): string
+    {
+        return 'customer';
+    }
 }
