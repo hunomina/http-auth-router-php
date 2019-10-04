@@ -86,12 +86,19 @@ class AuthRouter extends Router
         return $this;
     }
 
+    /**
+     * @param string $url
+     * @return AuthRouter
+     */
     public function setUnauthorizedUrl(string $url): AuthRouter
     {
         $this->unauthorizedUrl = $url;
         return $this;
     }
 
+    /**
+     * @return SecurityContext
+     */
     public function getSecurityContext(): SecurityContext
     {
         return $this->securityContext;
