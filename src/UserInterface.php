@@ -10,4 +10,10 @@ interface UserInterface
      * Return the user's roles array
      */
     public function getRoles(): array;
+
+    /**
+     * @return string
+     * Returns the username used to authenticate the user
+     */
+    public function getUsername(): string;
 }
